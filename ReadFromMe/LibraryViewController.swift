@@ -20,10 +20,15 @@ class LibraryViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
    
 
     
-    // MARK:- Data Source
+    //MARK: - Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       Library.books.count
     }
@@ -38,7 +43,3 @@ class LibraryViewController: UITableViewController {
 
 }
 
-//MARK: - DataSource
-extension LibraryViewController{
-
-}

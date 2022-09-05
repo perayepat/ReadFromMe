@@ -1,3 +1,5 @@
+
+
 import UIKit
 
 // MARK:- Reusable SFSymbol Images
@@ -15,12 +17,11 @@ enum LibrarySymbol {
     case .bookmarkFill:
       imageName = "bookmark.fill"
     case .letterSquare(let letter):
-      guard
-        let letter = letter?.lowercased(),
-        let image = UIImage(systemName: "\(letter).square")
-      else {
-        imageName = "square"
-        break
+      guard let letter = letter?.lowercased(),
+      let image = UIImage(systemName: "\(letter).square")
+        else {
+          imageName = "square"
+          break
       }
       return image
     }
@@ -29,7 +30,6 @@ enum LibrarySymbol {
 }
 
 // MARK:- Library
-// Used as a helper code for saving and loading data never instanced 
 enum Library {
   static let books: [Book] = [
     Book(title: "Ein Neues Land", author: "Shaun Tan"),
@@ -44,4 +44,24 @@ enum Library {
     Book(title: "Drawing People", author: "Barbara Bradley"),
     Book(title: "What to Say When You Talk to Yourself", author: "Shad Helmstetter")
   ]
-}
+  
+  static func saveImage(_ image: UIImage, forBook book: Book) {
+      let imageURL = FileManager.documentDirectoryURL.appendingPathComponent(book.title)
+      if let jpgData = image.jpegData(compressionQuality: 0.7) {
+        try? jpgData.write(to: imageURL, options: .atomicWrite)
+      }
+    }
+    
+    static func loadImage(forBook book: Book) -> UIImage? {
+      let imageURL = FileManager.documentDirectoryURL.appendingPathComponent(book.title)
+      return UIImage(contentsOfFile: imageURL.path)
+    }
+  }
+
+
+  extension FileManager {
+    static var documentDirectoryURL: URL {
+      return `default`.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+  }
+
