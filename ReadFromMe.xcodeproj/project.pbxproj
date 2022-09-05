@@ -15,6 +15,7 @@
 		43FCCE9928C64E2300431718 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43FCCE9728C64E2300431718 /* LaunchScreen.storyboard */; };
 		43FCCEA128C64FB300431718 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FCCEA028C64FB300431718 /* Book.swift */; };
 		43FCCEA328C656EF00431718 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FCCEA228C656EF00431718 /* Library.swift */; };
+		43FCCEA528C65F9500431718 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FCCEA428C65F9500431718 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		43FCCE9A28C64E2300431718 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43FCCEA028C64FB300431718 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		43FCCEA228C656EF00431718 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		43FCCEA428C65F9500431718 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				43FCCE9028C64E2100431718 /* LibraryViewController.swift */,
 				43FCCEA228C656EF00431718 /* Library.swift */,
 				43FCCE9228C64E2100431718 /* Main.storyboard */,
+				43FCCEA428C65F9500431718 /* DetailViewController.swift */,
 				43FCCEA028C64FB300431718 /* Book.swift */,
 				43FCCE9528C64E2300431718 /* Assets.xcassets */,
 				43FCCE9728C64E2300431718 /* LaunchScreen.storyboard */,
@@ -147,6 +150,7 @@
 				43FCCEA128C64FB300431718 /* Book.swift in Sources */,
 				43FCCE9128C64E2100431718 /* LibraryViewController.swift in Sources */,
 				43FCCEA328C656EF00431718 /* Library.swift in Sources */,
+				43FCCEA528C65F9500431718 /* DetailViewController.swift in Sources */,
 				43FCCE8D28C64E2100431718 /* AppDelegate.swift in Sources */,
 				43FCCE8F28C64E2100431718 /* SceneDelegate.swift in Sources */,
 			);
