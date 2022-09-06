@@ -7,32 +7,32 @@
 
 import UIKit
 
-//MARK: - Custom Class
-class LibraryHeaderView: UITableViewHeaderFooterView{
-    static let reuseIdentifier = "\(LibraryHeaderView.self)"
-    @IBOutlet var titleLabel: UILabel!
+enum Section: String, CaseIterable{
+    case addNew
+    case readMe = "Read Me "
+    case finished = "Finished"
 }
 
+
 class LibraryViewController: UITableViewController {
-    enum Section: String, CaseIterable{
-        case addNew
-        case readMe = "Read Me "
-        case finished = "Finished"
-    }
+    var dataSource: LibraryDataSource!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //edit button
+        navigationItem.rightBarButtonItem = editButtonItem
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: "\(LibraryHeaderView.self)", bundle: nil), forHeaderFooterViewReuseIdentifier: LibraryHeaderView.reuseIdentifier)
         configureDataSource()
-        upadateDataSource()
+        dataSource.upadate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        upadateDataSource()
+        dataSource.upadate()
     }
     
-    var dataSource: UITableViewDiffableDataSource<Section, Book>!
+    
     
     @IBSegueAction func showingDetail(_ coder: NSCoder) -> DetailViewController? {
         guard let indexPath = tableView.indexPathForSelectedRow,
@@ -70,7 +70,7 @@ class LibraryViewController: UITableViewController {
     
     //MARK: - Data Source
     func configureDataSource(){
-        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, book in
+        dataSource = LibraryDataSource(tableView: tableView, cellProvider: { tableView, indexPath, book in
             //Will return a cell same as row at
             if indexPath == IndexPath(row: 0, section:0){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "NewBookCell", for: indexPath)
@@ -134,5 +134,41 @@ class LibraryViewController: UITableViewController {
 //    }
     
 }
+//MARK: - Custom Class
+class LibraryHeaderView: UITableViewHeaderFooterView{
+    static let reuseIdentifier = "\(LibraryHeaderView.self)"
+    @IBOutlet var titleLabel: UILabel!
+}
 
-
+class LibraryDataSource: UITableViewDiffableDataSource<Section, Book>{
+    func upadate(){
+        //Snapshot of the data you want to display
+        var newSnapshot = NSDiffableDataSourceSnapshot<Section, Book>()
+        //new number of secitons method
+        newSnapshot.appendSections(Section.allCases)
+//        newSnapshot.appendItems(Library.books, toSection: .readMe)
+        
+        //Grouping by the books read me property
+        let booksByReadMe: [Bool:[Book]] = Dictionary(grouping: Library.books, by: \.readMe)
+        for (readMe, books) in booksByReadMe{
+            newSnapshot.appendItems(books,toSection: readMe ? .readMe : .finished)
+        }
+        newSnapshot.appendItems([Book.mockBook], toSection: .addNew)
+        apply(newSnapshot, animatingDifferences: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        //SHould you be able to remove books
+        //if the section is the add new section you can't delete it otherwise delete it
+        indexPath.section == snapshot().indexOfSection(.addNew) ? false : true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //Editing styles that can appear on a cell
+        if editingStyle == .delete{
+            guard let book = self.itemIdentifier(for: indexPath) else {return} //make sure there's a book for that index path
+            Library.delete(book: book)
+            upadate()
+        }
+    }
+}
