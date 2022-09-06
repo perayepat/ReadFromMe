@@ -145,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="1028.985507246377" y="95.758928571428569"/>
         </scene>
-        <!--Table View Controller-->
+        <!--New Book View Controller-->
         <scene sceneID="SRN-zl-vyj">
             <objects>
-                <tableViewController id="xjK-TK-NIv" sceneMemberID="viewController">
+                <tableViewController id="xjK-TK-NIv" customClass="NewBookViewController" customModule="ReadFromMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="CK8-HW-mXx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,7 +175,10 @@
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J48-kz-bug">
                                                             <rect key="frame" x="45" y="0.0" width="329" height="34"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="xjK-TK-NIv" id="mZf-X6-nEO"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -206,7 +209,10 @@
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Author..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7K0-Ea-640">
                                                             <rect key="frame" x="62.5" y="0.0" width="311.5" height="34"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="xjK-TK-NIv" id="Ry0-zT-umd"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -239,7 +245,7 @@
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" title="Update Image"/>
                                                             <connections>
-                                                                <action selector="updateImage" destination="ea3-rV-DL6" eventType="touchUpInside" id="YlL-nR-mSo"/>
+                                                                <action selector="updateImage" destination="xjK-TK-NIv" eventType="touchUpInside" id="7zk-hW-Cgk"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -263,6 +269,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="pbN-Ne-LDa"/>
+                    <connections>
+                        <outlet property="authorTextField" destination="7K0-Ea-640" id="RgY-FM-AsJ"/>
+                        <outlet property="bookImageView" destination="QfU-wx-BcY" id="sVD-Vb-Row"/>
+                        <outlet property="titleTextField" destination="J48-kz-bug" id="gi9-ae-sSu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqf-i0-jau" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -453,10 +464,14 @@
             <point key="canvasLocation" x="118.84057971014494" y="95.758928571428569"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="ReadMe Tint Color"/>
     <resources>
         <image name="book.circle" catalog="system" width="128" height="121"/>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="t.square" catalog="system" width="128" height="114"/>
+        <namedColor name="ReadMe Tint Color">
+            <color red="1" green="0.62400001287460327" blue="0.038999993354082108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
