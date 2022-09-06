@@ -16,6 +16,8 @@
 		43FCCEA128C64FB300431718 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FCCEA028C64FB300431718 /* Book.swift */; };
 		43FCCEA528C65F9500431718 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FCCEA428C65F9500431718 /* DetailViewController.swift */; };
 		43FCCEA728C6675300431718 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FCCEA628C6675300431718 /* Library.swift */; };
+		43FCCEA928C66E7400431718 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FCCEA828C66E7400431718 /* BookCell.swift */; };
+		43FCCEAB28C7734F00431718 /* NewBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FCCEAA28C7734F00431718 /* NewBookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		43FCCEA028C64FB300431718 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		43FCCEA428C65F9500431718 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		43FCCEA628C6675300431718 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		43FCCEA828C66E7400431718 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		43FCCEAA28C7734F00431718 /* NewBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +66,11 @@
 		43FCCE8B28C64E2100431718 /* ReadFromMe */ = {
 			isa = PBXGroup;
 			children = (
+				43FCCEAA28C7734F00431718 /* NewBookViewController.swift */,
 				43FCCE8C28C64E2100431718 /* AppDelegate.swift */,
 				43FCCE8E28C64E2100431718 /* SceneDelegate.swift */,
 				43FCCE9028C64E2100431718 /* LibraryViewController.swift */,
+				43FCCEA828C66E7400431718 /* BookCell.swift */,
 				43FCCEA628C6675300431718 /* Library.swift */,
 				43FCCE9228C64E2100431718 /* Main.storyboard */,
 				43FCCEA428C65F9500431718 /* DetailViewController.swift */,
@@ -149,7 +155,9 @@
 			files = (
 				43FCCEA128C64FB300431718 /* Book.swift in Sources */,
 				43FCCE9128C64E2100431718 /* LibraryViewController.swift in Sources */,
+				43FCCEAB28C7734F00431718 /* NewBookViewController.swift in Sources */,
 				43FCCEA528C65F9500431718 /* DetailViewController.swift in Sources */,
+				43FCCEA928C66E7400431718 /* BookCell.swift in Sources */,
 				43FCCE8D28C64E2100431718 /* AppDelegate.swift in Sources */,
 				43FCCE8F28C64E2100431718 /* SceneDelegate.swift in Sources */,
 				43FCCEA728C6675300431718 /* Library.swift in Sources */,

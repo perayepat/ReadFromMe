@@ -11,8 +11,8 @@ import UIKit
 struct Book{
     let title:String
     let author: String
+    var review: String?
     //tell it that it might have to load a book
-    
     var image: UIImage{
         Library.loadImage(forBook: self)
         ??

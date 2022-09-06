@@ -8,18 +8,25 @@
 import Foundation
 import UIKit
 
-class DetailViewController: UIViewController{
+class DetailViewController: UITableViewController{
     let book: Book
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var reviewTextView: UITextView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView.image = book.image
+        imageView.layer.cornerRadius = 15
         titleLabel.text = book.title
         authorLabel.text = book.author
+        if let review = book.review{
+            reviewTextView.text = review
+        }
+        reviewTextView.addDoneBUtton()
     }
     
     @IBAction func updateImage(){
@@ -54,5 +61,22 @@ extension DetailViewController: UIImagePickerControllerDelegate, UINavigationCon
         imageView.image = selectedImage         // if we have the image update the image view
         Library.saveImage(selectedImage, forBook: book)
         dismiss(animated: true)
+    }
+}
+
+extension DetailViewController: UITextViewDelegate{
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.resignFirstResponder()
+    }
+}
+
+extension UITextView{
+    func addDoneBUtton(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.resignFirstResponder))
+        toolbar.items = [flexSpace, doneButton]
+        self.inputAccessoryView = toolbar
     }
 }
