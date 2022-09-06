@@ -268,7 +268,18 @@
                             <outlet property="delegate" destination="xjK-TK-NIv" id="RGq-1b-Abv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="pbN-Ne-LDa"/>
+                    <navigationItem key="navigationItem" id="pbN-Ne-LDa">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="UYC-wp-vrd">
+                            <connections>
+                                <action selector="cancel" destination="xjK-TK-NIv" id="ydc-H4-k1e"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cAY-th-OrD">
+                            <connections>
+                                <action selector="saveNewBook" destination="xjK-TK-NIv" id="dEO-Fs-x5s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorTextField" destination="7K0-Ea-640" id="RgY-FM-AsJ"/>
                         <outlet property="bookImageView" destination="QfU-wx-BcY" id="sVD-Vb-Row"/>
@@ -309,6 +320,9 @@
                                                             <buttonConfiguration key="configuration" style="plain" image="bookmark.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="48"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="toggleReadMe" destination="ea3-rV-DL6" eventType="touchUpInside" id="aJt-oX-7f3"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="1si-fy-NAn">
                                                             <rect key="frame" x="116" y="12.5" width="258" height="61"/>
@@ -433,10 +447,17 @@
                             <outlet property="delegate" destination="ea3-rV-DL6" id="ZkT-bH-9Hb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="O9T-Mp-Pss"/>
+                    <navigationItem key="navigationItem" id="O9T-Mp-Pss">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="G0i-ZS-IxP">
+                            <connections>
+                                <action selector="saveChanges" destination="ea3-rV-DL6" id="cUP-oa-F4S"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="SrM-m8-D0w" id="LGo-qV-aKp"/>
                         <outlet property="imageView" destination="gVY-iG-oJt" id="ZUr-64-HnD"/>
+                        <outlet property="readMeButton" destination="xnm-RS-Qbw" id="eDk-Nx-C38"/>
                         <outlet property="reviewTextView" destination="wec-5Q-PJF" id="Yl4-Ry-vxT"/>
                         <outlet property="titleLabel" destination="Bzy-Ua-ZmC" id="dCr-iU-C7H"/>
                     </connections>
